@@ -1,9 +1,9 @@
-defmodule NauticNet.Proto do
+defmodule NauticNet.Protobuf do
   @moduledoc """
   Protobof implementation concerns.
   """
 
-  alias NauticNet.Proto.DataSet
+  alias NauticNet.Protobuf.DataSet
 
   def new_data_set(data_points, opts \\ []) do
     counter = opts[:counter] || 0

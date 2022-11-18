@@ -5,6 +5,6 @@
 # Run this from the project root.
 #
 
-protoc --elixir_out=. --elixir_opt=package_prefix=NauticNet.Proto ./lib/nautic_net/proto/*.proto
+protoc --elixir_out=. --elixir_opt=package_prefix=NauticNet.Protobuf ./lib/nautic_net/protobuf/*.proto
 
-mix format ./lib/nautic_net/proto/*.pb.ex
+mix format ./lib/nautic_net/protobuf/*.pb.ex
