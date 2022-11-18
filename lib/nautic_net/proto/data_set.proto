@@ -1,0 +1,67 @@
+syntax = "proto3";
+import "google/protobuf/timestamp.proto";
+
+enum DirectionReference {
+  DIRECTION_REFERENCE_NONE = 0;
+  DIRECTION_REFERENCE_TRUE = 1;
+  DIRECTION_REFERENCE_MAGNETIC = 2;
+}
+
+enum WindReference {
+  WIND_REFERENCE_NONE = 0;
+  WIND_REFERENCE_TRUE = 1;
+  WIND_REFERENCE_MAGNETIC = 2;
+  WIND_REFERENCE_APPARENT = 3;
+  WIND_REFERENCE_TRUE_BOAT = 4;
+  WIND_REFERENCE_TRUE_WATER = 5;
+}
+
+message DataSet {
+  message DataPoint {
+    google.protobuf.Timestamp timestamp = 1;
+    uint32 hw_unique_number = 2;
+  
+    oneof sample {
+      HeadingSample heading = 16;
+      SpeedSample speed_water_referenced = 17;
+      VelocitySample velocity_over_ground = 18;
+      WindVelocitySample wind_velocity = 19;
+      WaterDepthSample water_depth = 20;
+      PositionSample position = 21;
+    }
+  }
+
+  uint32 counter = 1;
+  repeated DataPoint data_points = 2;
+  string ref = 3;
+}
+
+message HeadingSample {
+  DirectionReference reference = 1;
+  float heading_deg = 2;
+}
+
+message SpeedSample {
+  float speed_kt = 1;
+}
+
+message VelocitySample {
+  DirectionReference reference = 1;
+  float speed_kt = 2;
+  float angle_deg = 3;
+}
+
+message WindVelocitySample {
+  WindReference reference = 1;
+  float speed_kt = 2;
+  float angle_deg = 3;
+}
+
+message WaterDepthSample {
+  float depth = 1;
+}
+
+message PositionSample {
+  float latitude = 1;
+  float longitude = 2;
+}
