@@ -44,7 +44,7 @@ defmodule NauticNet.ProtoTest do
     for _ <- 1..count do
       DataPoint.new(
         timestamp: Proto.utc_now(),
-        sample: {:speed_water_referenced, SpeedSample.new(speed_kt: :rand.uniform())}
+        sample: {:speed_water_referenced, SpeedSample.new(speed_m_s: :rand.uniform())}
       )
     end
   end
