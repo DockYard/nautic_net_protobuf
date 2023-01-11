@@ -1,19 +1,25 @@
 syntax = "proto3";
 import "google/protobuf/timestamp.proto";
 
-enum DirectionReference {
-  DIRECTION_REFERENCE_NONE = 0;
-  DIRECTION_REFERENCE_TRUE = 1;
-  DIRECTION_REFERENCE_MAGNETIC = 2;
+enum AngleReference {
+  ANGLE_REFERENCE_NONE = 0;
+  ANGLE_REFERENCE_TRUE_NORTH = 1;
+  ANGLE_REFERENCE_MAGNETIC_MORTH = 2;
+}
+
+enum SpeedReference {
+  SPEED_REFERENCE_NONE = 0;
+  SPEED_REFERENCE_GROUND = 1;
+  SPEED_REFERENCE_WATER = 2;
 }
 
 enum WindReference {
   WIND_REFERENCE_NONE = 0;
-  WIND_REFERENCE_TRUE = 1;
-  WIND_REFERENCE_MAGNETIC = 2;
+  WIND_REFERENCE_TRUE_NORTH = 1;
+  WIND_REFERENCE_MAGNETIC_NORTH = 2;
   WIND_REFERENCE_APPARENT = 3;
-  WIND_REFERENCE_TRUE_BOAT = 4;
-  WIND_REFERENCE_TRUE_WATER = 5;
+  WIND_REFERENCE_BOAT_TRUE_NORTH = 4;
+  WIND_REFERENCE_WATER_TRUE_NORTH = 5;
 }
 
 message DataSet {
@@ -23,8 +29,8 @@ message DataSet {
   
     oneof sample {
       HeadingSample heading = 16;
-      SpeedSample speed_water_referenced = 17;
-      VelocitySample velocity_over_ground = 18;
+      SpeedSample speed = 17;
+      VelocitySample velocity = 18;
       WindVelocitySample wind_velocity = 19;
       WaterDepthSample water_depth = 20;
       PositionSample position = 21;
@@ -37,22 +43,24 @@ message DataSet {
 }
 
 message HeadingSample {
-  DirectionReference reference = 1;
-  float heading_rad = 2;
+  AngleReference angle_reference = 1;
+  float angle_rad = 2;
 }
 
 message SpeedSample {
-  float speed_m_s = 1;
+  SpeedReference speed_reference = 1;
+  float speed_m_s = 2;
 }
 
 message VelocitySample {
-  DirectionReference reference = 1;
-  float speed_m_s = 2;
-  float angle_rad = 3;
+  SpeedReference speed_reference = 1;
+  AngleReference angle_reference = 2;
+  float speed_m_s = 3;
+  float angle_rad = 4;
 }
 
 message WindVelocitySample {
-  WindReference reference = 1;
+  WindReference wind_reference = 1;
   float speed_m_s = 2;
   float angle_rad = 3;
 }
