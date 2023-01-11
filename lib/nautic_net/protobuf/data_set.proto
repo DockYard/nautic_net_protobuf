@@ -38,27 +38,27 @@ message DataSet {
 
 message HeadingSample {
   DirectionReference reference = 1;
-  float heading_deg = 2;
+  float heading_rad = 2;
 }
 
 message SpeedSample {
-  float speed_kt = 1;
+  float speed_m_s = 1;
 }
 
 message VelocitySample {
   DirectionReference reference = 1;
-  float speed_kt = 2;
-  float angle_deg = 3;
+  float speed_m_s = 2;
+  float angle_rad = 3;
 }
 
 message WindVelocitySample {
   WindReference reference = 1;
-  float speed_kt = 2;
-  float angle_deg = 3;
+  float speed_m_s = 2;
+  float angle_rad = 3;
 }
 
 message WaterDepthSample {
-  float depth = 1;
+  float depth_m = 1;
 }
 
 message PositionSample {

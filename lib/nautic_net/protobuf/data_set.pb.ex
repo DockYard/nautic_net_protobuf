@@ -1,6 +1,6 @@
 defmodule NauticNet.Protobuf.DirectionReference do
   @moduledoc false
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
   field(:DIRECTION_REFERENCE_NONE, 0)
   field(:DIRECTION_REFERENCE_TRUE, 1)
@@ -9,7 +9,7 @@ end
 
 defmodule NauticNet.Protobuf.WindReference do
   @moduledoc false
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
   field(:WIND_REFERENCE_NONE, 0)
   field(:WIND_REFERENCE_TRUE, 1)
@@ -21,7 +21,7 @@ end
 
 defmodule NauticNet.Protobuf.DataSet.DataPoint do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
   oneof(:sample, 0)
 
@@ -58,7 +58,7 @@ end
 
 defmodule NauticNet.Protobuf.DataSet do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
   field(:counter, 1, type: :uint32)
 
@@ -73,47 +73,47 @@ end
 
 defmodule NauticNet.Protobuf.HeadingSample do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
   field(:reference, 1, type: NauticNet.Protobuf.DirectionReference, enum: true)
-  field(:heading_deg, 2, type: :float, json_name: "headingDeg")
+  field(:heading_rad, 2, type: :float, json_name: "headingRad")
 end
 
 defmodule NauticNet.Protobuf.SpeedSample do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
-  field(:speed_kt, 1, type: :float, json_name: "speedKt")
+  field(:speed_m_s, 1, type: :float, json_name: "speedMS")
 end
 
 defmodule NauticNet.Protobuf.VelocitySample do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
   field(:reference, 1, type: NauticNet.Protobuf.DirectionReference, enum: true)
-  field(:speed_kt, 2, type: :float, json_name: "speedKt")
-  field(:angle_deg, 3, type: :float, json_name: "angleDeg")
+  field(:speed_m_s, 2, type: :float, json_name: "speedMS")
+  field(:angle_rad, 3, type: :float, json_name: "angleRad")
 end
 
 defmodule NauticNet.Protobuf.WindVelocitySample do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
   field(:reference, 1, type: NauticNet.Protobuf.WindReference, enum: true)
-  field(:speed_kt, 2, type: :float, json_name: "speedKt")
-  field(:angle_deg, 3, type: :float, json_name: "angleDeg")
+  field(:speed_m_s, 2, type: :float, json_name: "speedMS")
+  field(:angle_rad, 3, type: :float, json_name: "angleRad")
 end
 
 defmodule NauticNet.Protobuf.WaterDepthSample do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
-  field(:depth, 1, type: :float)
+  field(:depth_m, 1, type: :float, json_name: "depthM")
 end
 
 defmodule NauticNet.Protobuf.PositionSample do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
   field(:latitude, 1, type: :float)
   field(:longitude, 2, type: :float)
