@@ -40,6 +40,7 @@ message DataSet {
   uint32 counter = 1;
   repeated DataPoint data_points = 2;
   string ref = 3;
+  string boat_identifier = 4;
 }
 
 message HeadingSample {

@@ -68,6 +68,7 @@ defmodule NauticNet.Protobuf.DataSet do
   )
 
   field(:ref, 3, type: :string)
+  field(:boat_identifier, 4, type: :string, json_name: "boatIdentifier")
 end
 
 defmodule NauticNet.Protobuf.HeadingSample do
