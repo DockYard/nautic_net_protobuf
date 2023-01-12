@@ -6,10 +6,16 @@ defmodule NauticNet.Protobuf do
   alias NauticNet.Protobuf.DataSet
 
   def new_data_set(data_points, opts \\ []) do
-    counter = opts[:counter] || 0
-    ref = opts[:ref] || new_ref()
+    defaults = %{
+      boat_identifier: "boat",
+      counter: 0,
+      data_points: data_points,
+      ref: new_ref()
+    }
 
-    DataSet.new(counter: counter, data_points: data_points, ref: ref)
+    values = Map.merge(defaults, Map.new(opts))
+
+    DataSet.new(values)
   end
 
   defp new_ref do
@@ -23,17 +29,16 @@ defmodule NauticNet.Protobuf do
   This is meant to fit encoded DataSets into UDP payload sizes (~512 bytes) that won't
   be fragmented across the Internet.
   """
-  def chunk_into_data_sets(data_points, max_bytes, opts \\ []) do
-    counter = opts[:counter] || 0
-
+  def chunk_into_data_sets(data_points, max_bytes, data_set_opts \\ []) do
     Enum.chunk_while(
       data_points,
-      DataSet.new(counter: counter),
+      new_data_set([], data_set_opts),
       fn data_point, data_set ->
         next_data_set = %DataSet{data_set | data_points: [data_point | data_set.data_points]}
 
         if byte_size(DataSet.encode(next_data_set)) > max_bytes do
-          next_acc = DataSet.new(counter: next_data_set.counter + 1, data_points: [data_point])
+          next_opts = Keyword.put(data_set_opts, :counter, next_data_set.counter + 1)
+          next_acc = new_data_set([data_point], next_opts)
           {:cont, data_set, next_acc}
         else
           {:cont, next_data_set}
