@@ -29,3 +29,9 @@ Do NOT make manual adjustments to the Elixir modules. Run:
 ./generate_ex.sh
 ```
 
+Then commit, push to GitHub, and update the dependencies on relevant projects:
+
+```sh
+# From the nautic_net_device and nautic_net_web projects
+mix deps.update nautic_net_protobuf
+```
