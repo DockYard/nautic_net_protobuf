@@ -45,32 +45,32 @@ message DataSet {
 
 message HeadingSample {
   AngleReference angle_reference = 1;
-  float angle_rad = 2;
+  int32 angle_mrad = 2; // milliradians: fixed-point radians with 0.001 precision
 }
 
 message SpeedSample {
   SpeedReference speed_reference = 1;
-  float speed_m_s = 2;
+  int32 speed_cm_s = 2; // centimeters per second: fixed-point m/s with 0.1 precision
 }
 
 message VelocitySample {
   SpeedReference speed_reference = 1;
   AngleReference angle_reference = 2;
-  float speed_m_s = 3;
-  float angle_rad = 4;
+  int32 speed_cm_s = 3; // centimeters per second: fixed-point m/s with 0.1 precision
+  int32 angle_mrad = 4; // milliradians: fixed-point radians with 0.001 precision
 }
 
 message WindVelocitySample {
   WindReference wind_reference = 1;
-  float speed_m_s = 2;
-  float angle_rad = 3;
+  int32 speed_cm_s = 2; // centimeters per second: fixed-point m/s with 0.1 precision
+  int32 angle_mrad = 3; // milliradians: fixed-point radians with 0.001 precision
 }
 
 message WaterDepthSample {
-  float depth_m = 1;
+  int32 depth_cm = 1; // centimeters: fixed-point meters with 0.1 precision
 }
 
 message PositionSample {
-  float latitude = 1;
-  float longitude = 2;
+  float latitude = 1; // degrees
+  float longitude = 2; // degrees
 }

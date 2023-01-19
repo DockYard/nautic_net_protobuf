@@ -81,7 +81,7 @@ defmodule NauticNet.Protobuf.HeadingSample do
     enum: true
   )
 
-  field(:angle_rad, 2, type: :float, json_name: "angleRad")
+  field(:angle_mrad, 2, type: :int32, json_name: "angleMrad")
 end
 
 defmodule NauticNet.Protobuf.SpeedSample do
@@ -94,7 +94,7 @@ defmodule NauticNet.Protobuf.SpeedSample do
     enum: true
   )
 
-  field(:speed_m_s, 2, type: :float, json_name: "speedMS")
+  field(:speed_cm_s, 2, type: :int32, json_name: "speedCmS")
 end
 
 defmodule NauticNet.Protobuf.VelocitySample do
@@ -113,8 +113,8 @@ defmodule NauticNet.Protobuf.VelocitySample do
     enum: true
   )
 
-  field(:speed_m_s, 3, type: :float, json_name: "speedMS")
-  field(:angle_rad, 4, type: :float, json_name: "angleRad")
+  field(:speed_cm_s, 3, type: :int32, json_name: "speedCmS")
+  field(:angle_mrad, 4, type: :int32, json_name: "angleMrad")
 end
 
 defmodule NauticNet.Protobuf.WindVelocitySample do
@@ -127,15 +127,15 @@ defmodule NauticNet.Protobuf.WindVelocitySample do
     enum: true
   )
 
-  field(:speed_m_s, 2, type: :float, json_name: "speedMS")
-  field(:angle_rad, 3, type: :float, json_name: "angleRad")
+  field(:speed_cm_s, 2, type: :int32, json_name: "speedCmS")
+  field(:angle_mrad, 3, type: :int32, json_name: "angleMrad")
 end
 
 defmodule NauticNet.Protobuf.WaterDepthSample do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
-  field(:depth_m, 1, type: :float, json_name: "depthM")
+  field(:depth_cm, 1, type: :int32, json_name: "depthCm")
 end
 
 defmodule NauticNet.Protobuf.PositionSample do
