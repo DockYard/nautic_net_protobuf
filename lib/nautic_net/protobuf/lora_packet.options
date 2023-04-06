@@ -1,0 +1,7 @@
+#
+# Used by Nanopb to generate C++ for nautic_net_tracker_mini
+#
+# Documentation: https://jpa.kapsi.fi/nanopb/docs/reference.html#generator-options
+#
+
+RoverConfiguration.slots max_count:100
