@@ -11,10 +11,13 @@ message LoRaPacket {
 }
 
 message RoverData {
-    float latitude = 1;
-    float longitude = 2;
-    uint32 heading = 3;
-    int32 heel = 4;
+    float latitude = 1; // degrees
+    float longitude = 2; // degrees
+    uint32 heading = 3; // degrees, fixed-point decimal with 0.1 precision
+    uint32 heel = 4; // degrees, fixed-point decimal with 0.1 precision, 0 to 1800
+    uint32 cog = 5; // degrees, fixed-point decimal with 0.1 precision, 0 to 3600
+    uint32 sog = 6; // knots, fixed-point decimal with 0.1 precision
+    uint32 battery = 7; // percent, 0 implies null
 }
 
 message RoverDiscovery {
