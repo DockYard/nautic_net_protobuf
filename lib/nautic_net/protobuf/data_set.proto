@@ -1,5 +1,6 @@
 syntax = "proto3";
 import "google/protobuf/timestamp.proto";
+import "lib/nautic_net/protobuf/lora_packet.proto";
 
 enum AngleReference {
   ANGLE_REFERENCE_NONE = 0;
@@ -34,6 +35,7 @@ message DataSet {
       WindVelocitySample wind_velocity = 19;
       WaterDepthSample water_depth = 20;
       PositionSample position = 21;
+      TrackerSample tracker = 22;
     }
   }
 
@@ -73,4 +75,9 @@ message WaterDepthSample {
 message PositionSample {
   float latitude = 1; // degrees
   float longitude = 2; // degrees
+}
+
+message TrackerSample {
+  sint32 rssi = 1; // dBm
+  RoverData rover_data = 2;
 }

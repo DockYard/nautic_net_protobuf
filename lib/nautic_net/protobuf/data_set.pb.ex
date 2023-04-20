@@ -53,6 +53,7 @@ defmodule NauticNet.Protobuf.DataSet.DataPoint do
   )
 
   field(:position, 21, type: NauticNet.Protobuf.PositionSample, oneof: 0)
+  field(:tracker, 22, type: NauticNet.Protobuf.TrackerSample, oneof: 0)
 end
 
 defmodule NauticNet.Protobuf.DataSet do
@@ -144,4 +145,12 @@ defmodule NauticNet.Protobuf.PositionSample do
 
   field(:latitude, 1, type: :float)
   field(:longitude, 2, type: :float)
+end
+
+defmodule NauticNet.Protobuf.TrackerSample do
+  @moduledoc false
+  use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
+
+  field(:rssi, 1, type: :sint32)
+  field(:rover_data, 2, type: NauticNet.Protobuf.RoverData, json_name: "roverData")
 end

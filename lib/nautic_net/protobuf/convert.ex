@@ -16,7 +16,6 @@ defmodule NauticNet.Protobuf.Convert do
   def encode_unit(value, :m_s, :cm_s), do: trunc(value * 10)
   def encode_unit(value, :m, :cm), do: trunc(value * 10)
 
-
   @doc """
   Convert a Protobuf field back into more-useful units.
   """
