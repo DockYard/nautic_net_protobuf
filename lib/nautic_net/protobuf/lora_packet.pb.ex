@@ -17,7 +17,10 @@ defmodule NauticNet.Protobuf.RoverData do
   field(:latitude, 1, type: :float)
   field(:longitude, 2, type: :float)
   field(:heading, 3, type: :uint32)
-  field(:heel, 4, type: :int32)
+  field(:heel, 4, type: :uint32)
+  field(:cog, 5, type: :uint32)
+  field(:sog, 6, type: :uint32)
+  field(:battery, 7, type: :uint32)
 end
 
 defmodule NauticNet.Protobuf.RoverDiscovery do
