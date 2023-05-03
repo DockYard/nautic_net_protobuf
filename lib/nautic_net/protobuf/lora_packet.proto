@@ -1,12 +1,14 @@
 syntax = "proto3";
 
 message LoRaPacket {
-    fixed32 hardwareID = 1;
+    fixed32 hardware_id = 1;
+    uint32 serial_number = 5;
 
     oneof payload {
-        RoverData roverData = 2;
-        RoverDiscovery roverDiscovery = 3;
-        RoverConfiguration roverConfiguration = 4;
+        RoverData rover_data = 2;
+        RoverDiscovery rover_discovery = 3;
+        RoverConfiguration rover_configuration = 4;
+        RoverReset rover_reset = 6;
     }
 }
 
@@ -27,4 +29,7 @@ message RoverConfiguration {
     repeated int32 slots = 1;
     uint32 sbw = 2;
     uint32 sf = 3;
+}
+
+message RoverReset {
 }
