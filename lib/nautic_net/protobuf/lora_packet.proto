@@ -1,9 +1,13 @@
 syntax = "proto3";
 
 message LoRaPacket {
+    // The fixed hardware identifier for the rover, based on the serial number of the ARM Cortex chip
     fixed32 hardware_id = 1;
+
+    // A logical, human-friendly identifier for the rover
     uint32 serial_number = 5;
 
+    // The packet contains one of these message types:
     oneof payload {
         RoverData rover_data = 2;
         RoverDiscovery rover_discovery = 3;
@@ -12,6 +16,7 @@ message LoRaPacket {
     }
 }
 
+// A sample of data from the rover
 message RoverData {
     float latitude = 1; // degrees
     float longitude = 2; // degrees
@@ -22,14 +27,23 @@ message RoverData {
     uint32 battery = 7; // percent, 0 implies null
 }
 
+// Message from a newly-powered-on rover, asking base station for configuration
 message RoverDiscovery {
 }
 
+// Message from the base station to a new rover, configuring it for communication
 message RoverConfiguration {
+    // TDMA slot numbers during which the rover is allowed to send RoverData
     repeated int32 slots = 1;
+
+    // LoRa bandwidth (kHz) when sending RoverData
     uint32 sbw = 2;
+
+    // LoRa spreading factor when sending RoverData
     uint32 sf = 3;
 }
 
+// Message from the base station telling a rover to soft-reset and attempt discovery again,
+// useful for when the base station has just powered on to ensure that rovers are reinitialized
 message RoverReset {
 }
