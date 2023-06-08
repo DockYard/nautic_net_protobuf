@@ -26,7 +26,7 @@ enum WindReference {
 message DataSet {
   message DataPoint {
     google.protobuf.Timestamp timestamp = 1;
-    uint32 hw_unique_number = 2;
+    uint32 hw_id = 2;
   
     oneof sample {
       HeadingSample heading = 16;
@@ -43,6 +43,12 @@ message DataSet {
   repeated DataPoint data_points = 2;
   string ref = 3;
   string boat_identifier = 4;
+  repeated NetworkDevice network_devices = 5;
+}
+
+message NetworkDevice {
+  uint32 hw_id = 1;
+  string name = 2;
 }
 
 message HeadingSample {

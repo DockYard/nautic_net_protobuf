@@ -35,7 +35,7 @@ defmodule NauticNet.Protobuf.DataSet.DataPoint do
   oneof(:sample, 0)
 
   field(:timestamp, 1, type: Google.Protobuf.Timestamp)
-  field(:hw_unique_number, 2, type: :uint32, json_name: "hwUniqueNumber")
+  field(:hw_id, 2, type: :uint32, json_name: "hwId")
   field(:heading, 16, type: NauticNet.Protobuf.HeadingSample, oneof: 0)
   field(:speed, 17, type: NauticNet.Protobuf.SpeedSample, oneof: 0)
   field(:velocity, 18, type: NauticNet.Protobuf.VelocitySample, oneof: 0)
@@ -70,6 +70,20 @@ defmodule NauticNet.Protobuf.DataSet do
 
   field(:ref, 3, type: :string)
   field(:boat_identifier, 4, type: :string, json_name: "boatIdentifier")
+
+  field(:network_devices, 5,
+    repeated: true,
+    type: NauticNet.Protobuf.NetworkDevice,
+    json_name: "networkDevices"
+  )
+end
+
+defmodule NauticNet.Protobuf.NetworkDevice do
+  @moduledoc false
+  use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
+
+  field(:hw_id, 1, type: :uint32, json_name: "hwId")
+  field(:name, 2, type: :string)
 end
 
 defmodule NauticNet.Protobuf.HeadingSample do
