@@ -1,6 +1,7 @@
 defmodule NauticNet.Protobuf.AngleReference do
   @moduledoc false
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
+
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:ANGLE_REFERENCE_NONE, 0)
   field(:ANGLE_REFERENCE_TRUE_NORTH, 1)
@@ -9,7 +10,8 @@ end
 
 defmodule NauticNet.Protobuf.SpeedReference do
   @moduledoc false
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
+
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:SPEED_REFERENCE_NONE, 0)
   field(:SPEED_REFERENCE_GROUND, 1)
@@ -18,7 +20,8 @@ end
 
 defmodule NauticNet.Protobuf.WindReference do
   @moduledoc false
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
+
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:WIND_REFERENCE_NONE, 0)
   field(:WIND_REFERENCE_TRUE_NORTH, 1)
@@ -30,7 +33,8 @@ end
 
 defmodule NauticNet.Protobuf.DataSet.DataPoint do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   oneof(:sample, 0)
 
@@ -58,7 +62,8 @@ end
 
 defmodule NauticNet.Protobuf.DataSet do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:counter, 1, type: :uint32)
 
@@ -80,7 +85,8 @@ end
 
 defmodule NauticNet.Protobuf.NetworkDevice do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:hw_id, 1, type: :uint32, json_name: "hwId")
   field(:name, 2, type: :string)
@@ -88,7 +94,8 @@ end
 
 defmodule NauticNet.Protobuf.HeadingSample do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:angle_reference, 1,
     type: NauticNet.Protobuf.AngleReference,
@@ -101,7 +108,8 @@ end
 
 defmodule NauticNet.Protobuf.SpeedSample do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:speed_reference, 1,
     type: NauticNet.Protobuf.SpeedReference,
@@ -114,7 +122,8 @@ end
 
 defmodule NauticNet.Protobuf.VelocitySample do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:speed_reference, 1,
     type: NauticNet.Protobuf.SpeedReference,
@@ -134,7 +143,8 @@ end
 
 defmodule NauticNet.Protobuf.WindVelocitySample do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:wind_reference, 1,
     type: NauticNet.Protobuf.WindReference,
@@ -148,14 +158,16 @@ end
 
 defmodule NauticNet.Protobuf.WaterDepthSample do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:depth_cm, 1, type: :int32, json_name: "depthCm")
 end
 
 defmodule NauticNet.Protobuf.PositionSample do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:latitude, 1, type: :float)
   field(:longitude, 2, type: :float)
@@ -163,8 +175,19 @@ end
 
 defmodule NauticNet.Protobuf.TrackerSample do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:rssi, 1, type: :sint32)
   field(:rover_data, 2, type: NauticNet.Protobuf.RoverData, json_name: "roverData")
+end
+
+defmodule NauticNet.Protobuf.AttitudeSample do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:yaw_mrad, 1, type: :int32, json_name: "yawMrad")
+  field(:pitch_mrad, 2, type: :int32, json_name: "pitchMrad")
+  field(:roll_mrad, 3, type: :int32, json_name: "rollMrad")
 end
