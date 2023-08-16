@@ -58,6 +58,7 @@ defmodule NauticNet.Protobuf.DataSet.DataPoint do
 
   field(:position, 21, type: NauticNet.Protobuf.PositionSample, oneof: 0)
   field(:tracker, 22, type: NauticNet.Protobuf.TrackerSample, oneof: 0)
+  field(:attitude, 23, type: NauticNet.Protobuf.AttitudeSample, oneof: 0)
 end
 
 defmodule NauticNet.Protobuf.DataSet do

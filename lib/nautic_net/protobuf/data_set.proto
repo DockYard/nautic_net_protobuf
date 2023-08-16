@@ -36,6 +36,7 @@ message DataSet {
       WaterDepthSample water_depth = 20;
       PositionSample position = 21;
       TrackerSample tracker = 22;
+      AttitudeSample attitude = 23;
     }
   }
 
