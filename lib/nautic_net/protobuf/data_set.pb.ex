@@ -188,7 +188,7 @@ defmodule NauticNet.Protobuf.AttitudeSample do
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
-  field(:yaw_mrad, 1, type: :int32, json_name: "yawMrad")
-  field(:pitch_mrad, 2, type: :int32, json_name: "pitchMrad")
-  field(:roll_mrad, 3, type: :int32, json_name: "rollMrad")
+  field(:yaw_mrad, 1, type: :sint32, json_name: "yawMrad")
+  field(:pitch_mrad, 2, type: :sint32, json_name: "pitchMrad")
+  field(:roll_mrad, 3, type: :sint32, json_name: "rollMrad")
 end
