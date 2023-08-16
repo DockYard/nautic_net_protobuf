@@ -36,6 +36,7 @@ message DataSet {
       WaterDepthSample water_depth = 20;
       PositionSample position = 21;
       TrackerSample tracker = 22;
+      AttitudeSample attitude = 23;
     }
   }
 
@@ -86,4 +87,10 @@ message PositionSample {
 message TrackerSample {
   sint32 rssi = 1; // dBm
   RoverData rover_data = 2;
+}
+
+message AttitudeSample {
+  int32 yaw_mrad = 1; // milliradians: fixed-point radians with 0.001 precision
+  int32 pitch_mrad = 2; // milliradians: fixed-point radians with 0.001 precision
+  int32 roll_mrad = 3; // milliradians: fixed-point radians with 0.001 precision
 }
