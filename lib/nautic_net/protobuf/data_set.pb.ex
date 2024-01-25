@@ -39,7 +39,7 @@ defmodule NauticNet.Protobuf.DataSet.DataPoint do
   oneof(:sample, 0)
 
   field(:timestamp, 1, type: Google.Protobuf.Timestamp)
-  field(:hw_id, 2, type: :uint32, json_name: "hwId")
+  field(:hw_id, 2, type: :uint64, json_name: "hwId")
   field(:heading, 16, type: NauticNet.Protobuf.HeadingSample, oneof: 0)
   field(:speed, 17, type: NauticNet.Protobuf.SpeedSample, oneof: 0)
   field(:velocity, 18, type: NauticNet.Protobuf.VelocitySample, oneof: 0)
@@ -89,7 +89,7 @@ defmodule NauticNet.Protobuf.NetworkDevice do
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
-  field(:hw_id, 1, type: :uint32, json_name: "hwId")
+  field(:hw_id, 1, type: :uint64, json_name: "hwId")
   field(:name, 2, type: :string)
 end
 
@@ -162,7 +162,7 @@ defmodule NauticNet.Protobuf.WaterDepthSample do
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
-  field(:depth_cm, 1, type: :int32, json_name: "depthCm")
+  field(:depth_cm, 1, type: :uint32, json_name: "depthCm")
 end
 
 defmodule NauticNet.Protobuf.PositionSample do
