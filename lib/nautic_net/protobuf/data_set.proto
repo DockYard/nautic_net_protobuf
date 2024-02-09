@@ -26,7 +26,7 @@ enum WindReference {
 message DataSet {
   message DataPoint {
     google.protobuf.Timestamp timestamp = 1;
-    uint32 hw_id = 2;
+    uint64 hw_id = 2;
   
     oneof sample {
       HeadingSample heading = 16;
@@ -48,7 +48,7 @@ message DataSet {
 }
 
 message NetworkDevice {
-  uint32 hw_id = 1;
+  uint64 hw_id = 1;
   string name = 2;
 }
 
@@ -76,7 +76,7 @@ message WindVelocitySample {
 }
 
 message WaterDepthSample {
-  int32 depth_cm = 1; // centimeters: fixed-point meters with 0.1 precision
+  uint32 depth_cm = 1; // centimeters: fixed-point meters with 0.1 precision
 }
 
 message PositionSample {
